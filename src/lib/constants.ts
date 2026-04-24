@@ -1,7 +1,7 @@
-// Production URL. We deploy to both http://zzhang.tech/abti and
-// http://123.57.39.204/abti (same server). Share text / QR codes use the
-// nicer one.
-export const PROD_URL = "http://zzhang.tech/abti";
+// Production URL. Deployed at https://zzhang.tech/abti (certbot on server
+// upgrades all http → https automatically). The same server also answers at
+// http://123.57.39.204/abti over plain HTTP for people without DNS.
+export const PROD_URL = "https://zzhang.tech/abti";
 
 /**
  * Runtime site URL for share text + QR.

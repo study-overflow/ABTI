@@ -4,7 +4,7 @@
 >
 > 你是 HUMAN 还是 CYBORG？是 UTOPIA 还是 DOOMER？30 道题，找到你在 AI 时代的存在姿态。
 
-🌐 **在线体验**：[zzhang.tech/abti](http://zzhang.tech/abti)
+🌐 **在线体验**：[zzhang.tech/abti](https://zzhang.tech/abti)
 
 ---
 
