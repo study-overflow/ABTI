@@ -26,7 +26,7 @@
 
 ## 致谢
 
-- **[CBTI · 程序员行为类型测试](https://cbti.codefather.cn)** by [程序员鱼皮](https://space.bilibili.com/12890453) — 本项目 fork 自 CBTI，继承了它的测试框架、打分算法和整体交互。
+- **[CBTI · 程序员行为类型测试](https://cbti.codefather.cn)** — 本项目 fork 自 CBTI，继承了它的测试框架、打分算法和整体交互。
 - **AI** — 主题本身就是关于 AI 的，所以这件事本身就有一种讽刺的自洽：人格插图由 Gemini 生成、Claude Code 切图去背景，题目、人格描述和这份 README 都由 Claude 参与起草。答题时偷偷开了 AI 的话，还能触发一个专门献给你的隐藏人格。
 
 ## 声明
