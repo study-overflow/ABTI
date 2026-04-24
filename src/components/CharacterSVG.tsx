@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { asset } from "@/lib/constants";
 
 interface Props {
   type?: string;
@@ -57,7 +58,7 @@ export default function CharacterSVG({
 
   return (
     <Image
-      src={`/characters/${filename}.png`}
+      src={asset(`/characters/${filename}.png`)}
       alt={type}
       width={size}
       height={size}
