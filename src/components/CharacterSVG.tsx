@@ -8,26 +8,56 @@ interface Props {
   size?: number;
 }
 
+/**
+ * 16 primary personalities + 1 hidden (TURING).
+ * "/dev/null" must be special-cased because a filename can't contain "/".
+ * It maps to the filesystem name "DEVNULL".
+ */
 const ALL_CODES = new Set([
-  "SUDO", "README", "GIT-F", "CRUD", "BUG-0", "404", "VIBE",
-  "LGTM", "NPM-i", "DEL-F", "FIXME", "HACK", "CTRL-C", "RUSH",
-  "RTFM", "TODO", "996", "GOTO", "PING", "NULL", "SENIOR",
-  "YAML", "STACK", "SLEEP", "FORK", "AGILE", "REGEX", "JAVA",
-  "//TODO",
+  "LUDDITE",
+  "WRAPPER",
+  "PROMPT",
+  "AGENT",
+  "NPC",
+  "CLONE",
+  "GHOST",
+  "HUMAN",
+  "UTOPIA",
+  "DOOMER",
+  "COPE",
+  "CYBORG",
+  "/dev/null",
+  "CONTEXT",
+  "VIBE",
+  "CTRL-Z",
+  "TURING",
 ]);
 
+/**
+ * Map personality code → on-disk PNG basename in public/characters/.
+ * Keep in sync with the equivalent block in src/app/result/page.tsx (poster canvas).
+ */
+export function codeToFilename(code: string): string {
+  if (code === "/dev/null") return "DEVNULL";
+  return code;
+}
+
 function resolveCode(type: string): string | null {
-  if (type === "//TODO") return "TODO";
   if (ALL_CODES.has(type)) return type;
   return null;
 }
 
-export default function CharacterSVG({ type = "default", className = "", size = 200 }: Props) {
-  const code = resolveCode(type) ?? "SUDO";
+export default function CharacterSVG({
+  type = "HUMAN",
+  className = "",
+  size = 200,
+}: Props) {
+  const code = resolveCode(type) ?? "HUMAN";
+  const filename = codeToFilename(code);
 
   return (
     <Image
-      src={`/characters/${code}.png`}
+      src={`/characters/${filename}.png`}
       alt={type}
       width={size}
       height={size}

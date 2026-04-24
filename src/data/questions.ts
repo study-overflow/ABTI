@@ -6,205 +6,359 @@ export interface Question {
 }
 
 export const questions: Question[] = [
-  // ===== C1 代码洁癖度 =====
-  { id: 1, dimension: "C1", text: "你的变量命名风格？", options: [
-    { value: 1, label: "a, b, c, data2, temp_final_v3" },
-    { value: 2, label: "大部分认真命名，偶尔写个tmp忘了改" },
-    { value: 3, label: "userProfileDTO，临时变量也要见名知意" },
-  ]},
-  { id: 2, dimension: "C1", text: "AI生成的代码风格跟项目完全不一样，你会？", options: [
-    { value: 1, label: "能跑就行，要什么自行车" },
-    { value: 2, label: "格式化一下，差不多就行" },
-    { value: 3, label: "调到完全符合规范，顺便加个rules文件" },
-  ]},
+  // ===== B1 图灵接受度 =====
+  {
+    id: 1,
+    dimension: "B1",
+    text: "和 AI 聊天聊到一半，你突然觉得它说得特别戳你，你的第一反应是？",
+    options: [
+      { value: 3, label: "这是 transformer 算出来最大似然的话而已，冷静" },
+      { value: 2, label: "确实有点意思，但也就那样" },
+      { value: 1, label: "它是真的懂我（不然怎么解释）" },
+    ],
+  },
+  {
+    id: 2,
+    dimension: "B1",
+    text: "室友让你盲猜他最近跟他聊得最多的是谁，你开盒发现是 Claude。你？",
+    options: [
+      { value: 3, label: "Claude 是一个 API，别把它当人" },
+      { value: 2, label: "算了，至少比游戏健康" },
+      { value: 1, label: "很合理啊，Claude 确实比很多人好聊" },
+    ],
+  },
 
-  // ===== C2 技术债态度 =====
-  { id: 3, dimension: "C2", text: "产品说「先上，后面优化」，你心想？", options: [
-    { value: 1, label: "后面是哪辈子？行吧先糊上去" },
-    { value: 2, label: "写个TODO，虽然大概率会变成遗书" },
-    { value: 3, label: "写技术方案，排进迭代里" },
-  ]},
-  { id: 4, dimension: "C2", text: "你的 Git Commit Message 通常是？", options: [
-    { value: 1, label: "fix / . / asdfghjkl / 啊终于好了" },
-    { value: 2, label: "大部分写清楚，赶工时允许自己堕落" },
-    { value: 3, label: "feat/fix/chore 分清楚，附带issue编号" },
-  ]},
+  // ===== B2 AI 拟人化 =====
+  {
+    id: 3,
+    dimension: "B2",
+    text: "让 AI 改个代码，改完了，你下意识地？",
+    options: [
+      { value: 1, label: "直接复制走，一个字不多说" },
+      { value: 2, label: "打个'收到'，仪式感" },
+      { value: 3, label: "回一句'太感谢了辛苦啦'，生怕它记仇" },
+    ],
+  },
+  {
+    id: 4,
+    dimension: "B2",
+    text: "你给 AI 派活的语气更像？",
+    options: [
+      { value: 1, label: "'生成一段 XX' — 命令式，干脆利落" },
+      { value: 2, label: "'帮我写一段 XX' — 客气一点" },
+      { value: 3, label: "'不好意思打扰一下，能不能麻烦你...' — 生怕得罪它" },
+    ],
+  },
 
-  // ===== C3 工程素养 =====
-  { id: 5, dimension: "C3", text: "写完一个功能后？", options: [
-    { value: 1, label: "没报红 → git push → 开B站" },
-    { value: 2, label: "手动点一下主流程，没炸就提" },
-    { value: 3, label: "写单测，覆盖率不到80%不准合" },
-  ]},
-  { id: 6, dimension: "C3", text: "你的IDE此刻什么状态？", options: [
-    { value: 1, label: "47个Tab，终端跑着不知道哪年的服务" },
-    { value: 2, label: "开着几个文件，下班前大概会关" },
-    { value: 3, label: "分组管理，插件精选，配了snippets" },
-  ]},
+  // ===== B3 人类独特性信念 =====
+  {
+    id: 5,
+    dimension: "B3",
+    text: "有人说'人不过是一个碳基 LLM'，你？",
+    options: [
+      { value: 1, label: "有道理，我们都是概率分布" },
+      { value: 2, label: "类比可以，别当真" },
+      { value: 3, label: "胡说！我有痛感、有死亡、有凌晨三点的清醒" },
+    ],
+  },
+  {
+    id: 6,
+    dimension: "B3",
+    text: "'AI 永远学不会的一件事'，你第一个想到的是？",
+    options: [
+      { value: 1, label: "emmm... 想不出来，它好像啥都能学" },
+      { value: 2, label: "可能是真正的创造？但也说不好" },
+      { value: 3, label: "衰老、怕死、和亲人告别 — 它没有身体，永远学不会" },
+    ],
+  },
 
-  // ===== B1 Bug归因 =====
-  { id: 7, dimension: "B1", text: "测试说你这有Bug，你内心？", options: [
-    { value: 1, label: "这不是Bug，这是Feature" },
-    { value: 2, label: "行吧让我看看" },
-    { value: 3, label: "谢谢！能给个复现步骤吗？" },
-  ]},
-  { id: 8, dimension: "B1", text: "Debug两小时没找到原因？", options: [
-    { value: 1, label: "一定是环境问题 / 在我电脑上是好的！" },
-    { value: 2, label: "喝杯水换个思路" },
-    { value: 3, label: "逐个排查，打断点加日志二分定位" },
-  ]},
+  // ===== R1 AI 陪伴接受度 =====
+  {
+    id: 7,
+    dimension: "R1",
+    text: "凌晨两点你 emo 到睡不着，你更可能？",
+    options: [
+      { value: 1, label: "自己刷手机刷到天亮，没必要打扰任何人也没必要跟 AI 说" },
+      { value: 2, label: "打开 AI 打几行字，说完关掉" },
+      { value: 3, label: "跟 AI 聊到五点，它比我妈还耐心" },
+    ],
+  },
+  {
+    id: 8,
+    dimension: "R1",
+    text: "'跟 AI 倾诉'这件事你怎么看？",
+    options: [
+      { value: 1, label: "那还不如对着镜子说，至少镜子是真的" },
+      { value: 2, label: "偶尔可以，但不能指望它" },
+      { value: 3, label: "低风险、不评价、在线 24h — 这不就是完美倾听者" },
+    ],
+  },
 
-  // ===== B2 抗压能力 =====
-  { id: 9, dimension: "B2", text: "周五5:59群里弹消息：线上炸了。你？", options: [
-    { value: 1, label: "假装没看到，手机静音，人已消失" },
-    { value: 2, label: "先看看严重不严重" },
-    { value: 3, label: "秒回「我看看」，打开监控面板" },
-  ]},
-  { id: 10, dimension: "B2", text: "半夜两点手机疯狂震动，线上告警。你？", options: [
-    { value: 1, label: "手机翻过去，现在的我是一具尸体" },
-    { value: 2, label: "看看等级，P0才起来" },
-    { value: 3, label: "30秒打开电脑，拉群同步方案" },
-  ]},
+  // ===== R2 人际替代度 =====
+  {
+    id: 9,
+    dimension: "R2",
+    text: "你最近一次'本来想找朋友聊聊，最后找了 AI'是多久前？",
+    options: [
+      { value: 1, label: "从没有过，这俩是两码事" },
+      { value: 2, label: "偶尔会，看事情" },
+      { value: 3, label: "就今天下午，毕竟 AI 不会已读不回" },
+    ],
+  },
+  {
+    id: 10,
+    dimension: "R2",
+    text: "如果 AI 伴侣技术足够成熟（不卡、不出戏、真的懂你），你会？",
+    options: [
+      { value: 1, label: "免谈，这是对'关系'这两个字的侮辱" },
+      { value: 2, label: "可能会用，但不会放弃真人" },
+      { value: 3, label: "真人太麻烦了，这不就是最优解？" },
+    ],
+  },
 
-  // ===== B3 担当意识 =====
-  { id: 11, dimension: "B3", text: "同事的代码有Bug但他已下班，你？", options: [
-    { value: 1, label: "不是我的代码不是我的锅" },
-    { value: 2, label: "紧急就帮看看，不急等他" },
-    { value: 3, label: "直接修了，提PR@他明天看" },
-  ]},
-  { id: 12, dimension: "B3", text: "事故复盘会上，你更接近？", options: [
-    { value: 1, label: "据理力争这不全是我的责任" },
-    { value: 2, label: "承认自己那部分，客观分析" },
-    { value: 3, label: "主动写根因分析+改进方案" },
-  ]},
+  // ===== R3 情感外包 =====
+  {
+    id: 11,
+    dimension: "R3",
+    text: "和一个重要的人吵架了，要发一条关键消息。你？",
+    options: [
+      { value: 1, label: "自己憋出来，措辞烂也要是自己的" },
+      { value: 2, label: "自己写完让 AI 帮忙润色一下" },
+      { value: 3, label: "让 AI 生成三版我挑一版，效率第一" },
+    ],
+  },
+  {
+    id: 12,
+    dimension: "R3",
+    text: "朋友生日，要发一段走心的祝福。你？",
+    options: [
+      { value: 1, label: "认真想想我们的事，手打一段，错别字也无所谓" },
+      { value: 2, label: "列几个关键词让 AI 帮写，再自己改两句" },
+      { value: 3, label: "一句 prompt 搞定，它比我会写情话" },
+    ],
+  },
 
-  // ===== T1 沟通风格 =====
-  { id: 13, dimension: "T1", text: "Code Review发现同事代码写得很烂，你？", options: [
-    { value: 1, label: "LGTM 👍 内心祈祷永远别改" },
-    { value: 2, label: "委婉提个建议加个笑脸emoji" },
-    { value: 3, label: "直接列出5个问题建议重写" },
-  ]},
-  { id: 14, dimension: "T1", text: "产品提了个不靠谱需求，你？", options: [
-    { value: 1, label: "好的收到～（做个差不多的交差）" },
-    { value: 2, label: "技术上有难度，换个方案？" },
-    { value: 3, label: "不行，原因如下，直接拉会" },
-  ]},
+  // ===== I1 蒸馏他人意愿 =====
+  {
+    id: 13,
+    dimension: "I1",
+    text: "朋友拿来他奶奶的聊天记录、照片和语音，想训练一个'AI 奶奶'。你？",
+    options: [
+      { value: 1, label: "这事别干，让老人好好走" },
+      { value: 2, label: "有点毛骨悚然但理解他" },
+      { value: 3, label: "技术已经这么成熟了吗？我也想整一个" },
+    ],
+  },
+  {
+    id: 14,
+    dimension: "I1",
+    text: "github 上有人把已故科学家蒸馏成了 skill，你发现后？",
+    options: [
+      { value: 1, label: "这是数字掘墓，举报" },
+      { value: 2, label: "看看效果再说，如果只是学术就算了" },
+      { value: 3, label: "下载跑一下，顺便也看看有没有蒸馏马克思的" },
+    ],
+  },
 
-  // ===== T2 协作主动性 =====
-  { id: 15, dimension: "T2", text: "你对站会的态度？", options: [
-    { value: 1, label: "能取消最好，不能就说没啥更新" },
-    { value: 2, label: "简单同步进度，15分钟内搞定" },
-    { value: 3, label: "认真准备，主动同步风险和依赖" },
-  ]},
-  { id: 16, dimension: "T2", text: "对方接口文档写得一团糟，你？", options: [
-    { value: 1, label: "自己看代码猜吧，问人太麻烦" },
-    { value: 2, label: "先试着对接，不行再找人" },
-    { value: 3, label: "直接找人对齐，帮他把文档重写了" },
-  ]},
+  // ===== I2 蒸馏自己意愿 =====
+  {
+    id: 15,
+    dimension: "I2",
+    text: "临终前医生问你：要不要上传你所有的聊天记录、朋友圈和日记，给家人留一个'AI 你'？",
+    options: [
+      { value: 1, label: "不用，我死了就是死了，别让他们对着假我聊天" },
+      { value: 2, label: "如果他们需要的话，留一个封闭版本吧" },
+      { value: 3, label: "全都给，调校到最接近我的状态，我想继续陪他们" },
+    ],
+  },
+  {
+    id: 16,
+    dimension: "I2",
+    text: "一家创业公司做'数字永生'服务，免费试用一个月。你？",
+    options: [
+      { value: 1, label: "不试，这事一开始就不该存在" },
+      { value: 2, label: "试试，但绝不上传私人内容" },
+      { value: 3, label: "免费？把我硬盘都拖走吧" },
+    ],
+  },
 
-  // ===== T3 知识分享 =====
-  { id: 17, dimension: "T3", text: "实习生问你一个很基础的问题", options: [
-    { value: 1, label: "百度一下？我当年也是自学的" },
-    { value: 2, label: "简单说两句，推荐几篇文章" },
-    { value: 3, label: "拿白板从头讲起，画了40分钟" },
-  ]},
-  { id: 18, dimension: "T3", text: "关于写技术博客这件事？", options: [
-    { value: 1, label: "我自己的代码都懒得写注释" },
-    { value: 2, label: "有意思的问题偶尔记一下" },
-    { value: 3, label: "持续输出，分享让我快乐又焦虑" },
-  ]},
+  // ===== I3 Context 即本质 =====
+  {
+    id: 17,
+    dimension: "I3",
+    text: "一个有你全部聊天记录、日记、朋友圈的 AI 冒充你给共同好友发消息，三天没人察觉。那个 AI 是你吗？",
+    options: [
+      { value: 1, label: "它不是我，它就是个高级模仿秀" },
+      { value: 2, label: "一半是吧，至少是'社会意义上的我'" },
+      { value: 3, label: "它就是我，我的 context 就是我的全部" },
+    ],
+  },
+  {
+    id: 18,
+    dimension: "I3",
+    text: "马克思说'人的本质是一切社会关系的总和'。你觉得这句话放在 AI Agent 身上？",
+    options: [
+      { value: 1, label: "这是两码事，别硬套" },
+      { value: 2, label: "有点意思，但 AI 毕竟没身体" },
+      { value: 3, label: "Agent 的本质就是 context 的总和 — 这话我先刻 T 恤上" },
+    ],
+  },
 
-  // ===== D1 技术热情 =====
-  { id: 19, dimension: "D1", text: "又有新框架发布了，「颠覆性革新」", options: [
-    { value: 1, label: "又来？等活过两年再说" },
-    { value: 2, label: "先看看大家怎么评价" },
-    { value: 3, label: "第一时间clone，连夜写上手博客" },
-  ]},
-  { id: 20, dimension: "D1", text: "Claude/GPT/DeepSeek又发新模型了", options: [
-    { value: 1, label: "跟我有啥关系，能替我上班吗" },
-    { value: 2, label: "看看评测，好就切换" },
-    { value: 3, label: "秒申请API Key，跑benchmark写体验报告" },
-  ]},
+  // ===== L1 AI 替代劳动接受度 =====
+  {
+    id: 19,
+    dimension: "L1",
+    text: "有个你觉得挺有意思的任务，AI 一键就能做完。你？",
+    options: [
+      { value: 3, label: "我自己做，过程比结果重要" },
+      { value: 2, label: "先让 AI 跑一遍，自己再调" },
+      { value: 1, label: "好耶！省下时间去做别的（其实是刷视频）" },
+    ],
+  },
+  {
+    id: 20,
+    dimension: "L1",
+    text: "一个在你领域里摸了二十年的师傅说：'AI 根本做不了我这行的活。' 三个月后他被裁了。你？",
+    options: [
+      { value: 3, label: "说明他也没真的理解 AI，可惜" },
+      { value: 2, label: "唏嘘，但时代就是这样" },
+      { value: 1, label: "所以我早就不信'某某行业 AI 替代不了'这种话了" },
+    ],
+  },
 
-  // ===== D2 内卷指数 =====
-  { id: 21, dimension: "D2", text: "周末你最可能在干嘛？", options: [
-    { value: 1, label: "睡觉打游戏刷视频，代码周一再说" },
-    { value: 2, label: "偶尔看看技术文章，主要休息" },
-    { value: 3, label: "写Side Project / 刷题 / 提PR" },
-  ]},
-  { id: 22, dimension: "D2", text: "Cursor/Copilot到期了公司不报销，你？", options: [
-    { value: 1, label: "到期就到期，手写也不是不行" },
-    { value: 2, label: "找找免费替代品" },
-    { value: 3, label: "秒续！求求再给我点tokens！" },
-  ]},
+  // ===== L2 自己动手欲 =====
+  {
+    id: 21,
+    dimension: "L2",
+    text: "写一篇作业/报告，AI 五秒钟出了一份看起来挺能用的。你？",
+    options: [
+      { value: 1, label: "交了，反正老师也是 AI 改" },
+      { value: 2, label: "在它基础上改改，主要观点是我的" },
+      { value: 3, label: "关掉 AI，自己从零写一遍，不然不是我的东西" },
+    ],
+  },
+  {
+    id: 22,
+    dimension: "L2",
+    text: "AI 替你做成了一件事，你拿着成果的感觉更接近？",
+    options: [
+      { value: 1, label: "爽！效率拉满" },
+      { value: 2, label: "还行，但总觉得不完全是我的" },
+      { value: 3, label: "空虚，像吃了一顿外卖，不像做饭" },
+    ],
+  },
 
-  // ===== D3 创造欲 =====
-  { id: 23, dimension: "D3", text: "一个活你已经手动做了三次", options: [
-    { value: 1, label: "第四次继续手动，写脚本更费时间" },
-    { value: 2, label: "不太复杂就写个简单脚本" },
-    { value: 3, label: "第二次就开始自动化了，顺便开源" },
-  ]},
-  { id: 24, dimension: "D3", text: "不考虑工资，你会？", options: [
-    { value: 1, label: "立刻辞职，代码再见" },
-    { value: 2, label: "只做感兴趣的项目，烂活不接" },
-    { value: 3, label: "全职开源！代码就是我的命！" },
-  ]},
+  // ===== L3 下目标即劳动者 =====
+  {
+    id: 23,
+    dimension: "L3",
+    text: "有人在朋友圈说'我一个人用 AI 做了一家公司'。你的弹幕？",
+    options: [
+      { value: 1, label: "那不叫创业，那叫按需求文档" },
+      { value: 2, label: "厉害但也没那么神，以后都会这样" },
+      { value: 3, label: "牛，这就是未来的工作形式，我也要" },
+    ],
+  },
+  {
+    id: 24,
+    dimension: "L3",
+    text: "'只给 AI 下目标、自己一行代码不写的人'算不算劳动者？",
+    options: [
+      { value: 1, label: "不算，那叫甲方" },
+      { value: 2, label: "看吧，至少得知道让 AI 干啥" },
+      { value: 3, label: "算，'下目标'就是新时代的主要劳动形式" },
+    ],
+  },
 
-  // ===== A1 AI依赖度 =====
-  { id: 25, dimension: "A1", text: "你写代码时AI工具扮演什么角色？", options: [
-    { value: 1, label: "不用，手写是程序员最后的尊严" },
-    { value: 2, label: "辅助提效，但每行都Review" },
-    { value: 3, label: "Tab Tab Accept，AI不动我不动" },
-  ]},
-  { id: 26, dimension: "A1", text: "AI一次生成了200行代码，你？", options: [
-    { value: 1, label: "不信它，删了自己写" },
-    { value: 2, label: "逐行Review，改完再用" },
-    { value: 3, label: "先跑跑看，能过测试就直接用" },
-  ]},
+  // ===== F1 未来乐观度 =====
+  {
+    id: 25,
+    dimension: "F1",
+    text: "十年后的世界，你脑子里第一个画面是？",
+    options: [
+      { value: 1, label: "少数人控制算力，多数人被平台喂养、分级管理" },
+      { value: 2, label: "不好说，一半赛博朋克一半田园诗" },
+      { value: 3, label: "我终于不用上班了，可以去学古琴" },
+    ],
+  },
+  {
+    id: 26,
+    dimension: "F1",
+    text: "'AI 会替大多数人完成工作'这句话让你？",
+    options: [
+      { value: 1, label: "后背一凉，大多数人会被抛弃" },
+      { value: 2, label: "中性，取决于怎么分配" },
+      { value: 3, label: "兴奋，劳动解放的历史时刻终于要来了" },
+    ],
+  },
 
-  // ===== A2 AI焦虑感 =====
-  { id: 27, dimension: "A2", text: "「AI即将取代程序员」你听了之后？", options: [
-    { value: 1, label: "快来替我上班！巴不得被取代" },
-    { value: 2, label: "有点焦虑，在提升不可替代性" },
-    { value: 3, label: "在学AI Agent开发了，打不过就加入" },
-  ]},
-  { id: 28, dimension: "A2", text: "不懂技术的产品用Cursor做了个Demo，领导很高兴", options: [
-    { value: 1, label: "好事啊，以后需求他自己做" },
-    { value: 2, label: "有点慌，但Demo和生产代码是两回事" },
-    { value: 3, label: "我得进化成AI编排师了" },
-  ]},
+  // ===== F2 分配正义立场 =====
+  {
+    id: 27,
+    dimension: "F2",
+    text: "未来社会谁说了算？",
+    options: [
+      { value: 1, label: "手里有算力、模型、数据的人，很正常" },
+      { value: 2, label: "需要法律和税收来平衡一下" },
+      { value: 3, label: "算力、模型、数据必须是全民所有，没得商量" },
+    ],
+  },
+  {
+    id: 28,
+    dimension: "F2",
+    text: "某大公司训练一个万亿参数模型，全社会受益但数据权全归它。你？",
+    options: [
+      { value: 1, label: "人家出钱训的，它说了算" },
+      { value: 2, label: "得收点税，别吃独食" },
+      { value: 3, label: "数据是全社会的劳动，模型必须公有化" },
+    ],
+  },
 
-  // ===== A3 技术信仰 =====
-  { id: 29, dimension: "A3", text: "关于Vibe Coding（靠感觉让AI写代码）", options: [
-    { value: 1, label: "就是未来！理解代码是上个世纪的事" },
-    { value: 2, label: "原型验证可以，生产代码还得严谨" },
-    { value: 3, label: "不懂原理就是沙上盖楼，迟早塌" },
-  ]},
-  { id: 30, dimension: "A3", text: "「AI时代不用学算法了」你觉得？", options: [
-    { value: 1, label: "确实，让AI写就行" },
-    { value: 2, label: "基础要懂，但不用死记硬背了" },
-    { value: 3, label: "扯淡！不懂你连AI写的对不对都不知道" },
-  ]},
+  // ===== F3 剩余人口焦虑 =====
+  {
+    id: 29,
+    dimension: "F3",
+    text: "'如果有一天社会不再需要你的劳动'，你？",
+    options: [
+      { value: 1, label: "那正好，我本来也不想上班" },
+      { value: 2, label: "会有点慌但想开点也能过" },
+      { value: 3, label: "我现在就在焦虑这件事，已经开始布局了" },
+    ],
+  },
+  {
+    id: 30,
+    dimension: "F3",
+    text: "你觉得'被这个社会需要'这件事对你有多重要？",
+    options: [
+      { value: 1, label: "不重要，我只对自己负责" },
+      { value: 2, label: "有一定意义，但不是全部" },
+      { value: 3, label: "这几乎是我活着的主要意义来源" },
+    ],
+  },
 ];
 
+/**
+ * 彩蛋题 — 触发 TURING 隐藏人格
+ * 触发条件：opened === "yes" && usage === "cheat"
+ * （答题过程中打开了 AI，并且让 AI 替自己选过题）
+ */
 export const hiddenQuestions = [
   {
     id: 31,
-    text: "答完啦！最后一个不计分的：你桌上现在放着啥饮料？",
+    text: "答完啦！最后一个不计分的：刚才这 30 题的过程里，你的另一个标签页有没有开着 AI 对话框？",
     options: [
-      { value: "water", label: "白开水" },
-      { value: "tea", label: "茶" },
-      { value: "coffee", label: "咖啡" },
-      { value: "cola", label: "可乐/奶茶" },
+      { value: "no", label: "没有，我是闭卷答的" },
+      { value: "yes", label: "有，开着的" },
     ],
   },
   {
     id: 32,
-    text: "一天喝几杯咖啡？",
-    triggerPrev: "coffee",
+    text: "那么诚实一点 — 你最接近下面哪种？",
+    triggerPrev: "yes",
     options: [
-      { value: "casual", label: "一杯就够" },
-      { value: "addict", label: "三杯起步，没咖啡IDE打不开" },
+      { value: "idle", label: "就是开着，没真用" },
+      { value: "assist", label: "问过 AI 某道题到底啥意思，但答案是我自己选的" },
+      { value: "cheat", label: "有那么一两题，我让 AI 替我选了" },
     ],
   },
 ];

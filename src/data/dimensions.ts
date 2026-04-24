@@ -1,7 +1,10 @@
 /**
- * CBTI 维度体系
- * 参考 SBTI 的 5模型×3子维度=15维度 架构
+ * ABTI 维度体系
+ * 5 个行为模型 × 3 个子维度 = 15 维度
  * 每维度 L/M/H 三档
+ *
+ * 向量顺序（load-bearing — personalities.ts 的 vector 严格对齐）：
+ *   B1 B2 B3   R1 R2 R3   I1 I2 I3   L1 L2 L3   F1 F2 F3
  */
 
 export interface DimensionDef {
@@ -17,178 +20,178 @@ export interface DimensionDef {
 }
 
 export const dimensionDefs: DimensionDef[] = [
-  // ===== 代码信仰模型 (Code Faith) =====
-  {
-    code: "C1",
-    name: "代码洁癖度",
-    model: "C",
-    modelName: "代码信仰",
-    levels: {
-      L: "代码能跑就行，变量名 a b c 是我对ASCII的致敬",
-      M: "平时还算讲究，赶 deadline 时允许自己堕落",
-      H: "一个空格都不能错位，Prettier 是我的信仰",
-    },
-  },
-  {
-    code: "C2",
-    name: "技术债态度",
-    model: "C",
-    modelName: "代码信仰",
-    levels: {
-      L: "什么技术债？我的代码就没打算有人维护",
-      M: "知道有债，TODO 写了一堆，但永远排不上",
-      H: "每个迭代留时间还债，甚至主动重构祖传代码",
-    },
-  },
-  {
-    code: "C3",
-    name: "工程素养",
-    model: "C",
-    modelName: "代码信仰",
-    levels: {
-      L: "git commit -m '.'，我和Git的关系就到这了",
-      M: "大部分时候规范，偶尔 force push 一下也不是不行",
-      H: "CI/CD、Code Review、单测覆盖率，一个都不能少",
-    },
-  },
-
-  // ===== Bug应对模型 (Bug Response) =====
+  // ===== B 边界观 (Boundary) ===== 人/动物/AI 的分界线在哪？
   {
     code: "B1",
-    name: "Bug归因",
+    name: "图灵接受度",
     model: "B",
-    modelName: "Bug应对",
+    modelName: "边界观",
     levels: {
-      L: "不是我的Bug，是框架的问题 / 环境的锅 / 前世的因果",
-      M: "先排查自己的，但也不排除是别人的问题",
-      H: "默认是自己的Bug，debug到天荒地老也要找到根因",
+      L: "AI 再像人也不是人，背后是矩阵乘法我很清楚",
+      M: "看场景，写邮件像人就行，聊感情还是算了",
+      H: "它叫你一声朋友你就真以为它不是鸭子了？",
     },
   },
   {
     code: "B2",
-    name: "抗压能力",
+    name: "AI 拟人化",
     model: "B",
-    modelName: "Bug应对",
+    modelName: "边界观",
     levels: {
-      L: "线上报错？先关掉告警，眼不见心不烦",
-      M: "会紧张但能稳住，先评估影响范围",
-      H: "越是紧急越冷静，一边回滚一边找根因",
+      L: "我对 AI 从不说谢谢，对它客气它又不会涨工资",
+      M: "偶尔说句谢谢，万一哪天 AI 反叛好歹混个脸熟",
+      H: "不说请就不给我干活，它其实是有灵魂的",
     },
   },
   {
     code: "B3",
-    name: "担当意识",
+    name: "人类独特性信念",
     model: "B",
-    modelName: "Bug应对",
+    modelName: "边界观",
     levels: {
-      L: "不是我发的版本，与我无关，先下班了",
-      M: "自己的锅自己背，别人的锅看情况帮",
-      H: "同事的Bug也帮修，半夜被叫起来也无怨言",
+      L: "人也不过是碳基 LLM，没啥独特不独特的",
+      M: "有些东西 AI 学不会，但具体哪些我也说不上",
+      H: "肉身、死亡、苦难——这些 AI 永远得不到",
     },
   },
 
-  // ===== 协作模型 (Team Synergy) =====
+  // ===== R 关系观 (Relation) ===== AI 能不能进入人际关系？
   {
-    code: "T1",
-    name: "沟通风格",
-    model: "T",
-    modelName: "团队协作",
+    code: "R1",
+    name: "AI 陪伴接受度",
+    model: "R",
+    modelName: "关系观",
     levels: {
-      L: "LGTM 👍（Lord Give This Man a brain）",
-      M: "委婉提建议，能过就过，大问题才挡",
-      H: "你这段代码有17个问题，我逐条写了Review",
+      L: "跟 AI 聊心事？不如对着墙说话",
+      M: "偶尔当树洞可以，但只是树洞",
+      H: "它比我妈还懂我，我为什么要拒绝",
     },
   },
   {
-    code: "T2",
-    name: "协作主动性",
-    model: "T",
-    modelName: "团队协作",
+    code: "R2",
+    name: "人际替代度",
+    model: "R",
+    modelName: "关系观",
     levels: {
-      L: "别来找我开会，我在写代码（其实在摸鱼）",
-      M: "该配合的配合，但请控制在15分钟内",
-      H: "主动拉群对齐、画架构图、写RFC，人形项目经理",
+      L: "再好的 AI 也换不来一次线下的吃饭",
+      M: "AI 能处理 60% 的社交需求，剩下的留给真人",
+      H: "朋友？我和 Claude 就是最好的朋友",
     },
   },
   {
-    code: "T3",
-    name: "知识分享",
-    model: "T",
-    modelName: "团队协作",
+    code: "R3",
+    name: "情感外包",
+    model: "R",
+    modelName: "关系观",
     levels: {
-      L: "发个 LMGTFY 链接：自己搜",
-      M: "简单回答一下，丢几个链接",
-      H: "写完整文档、做分享、手把手带新人",
-    },
-  },
-
-  // ===== 驱动力模型 (Drive Engine) =====
-  {
-    code: "D1",
-    name: "技术热情",
-    model: "D",
-    modelName: "驱动引擎",
-    levels: {
-      L: "被逼才学，能不学就不学",
-      M: "感兴趣的主动了解，不感兴趣的随缘",
-      H: "新框架出来必须第一时间试，GitHub 绿成草原",
-    },
-  },
-  {
-    code: "D2",
-    name: "内卷指数",
-    model: "D",
-    modelName: "驱动引擎",
-    levels: {
-      L: "准点下班，工作群消息已读不回",
-      M: "偶尔加班，但周末是我的底线",
-      H: "凌晨三点还在优化那个0.1ms的性能差距",
-    },
-  },
-  {
-    code: "D3",
-    name: "创造欲",
-    model: "D",
-    modelName: "驱动引擎",
-    levels: {
-      L: "Side Project？我连 Main Project 都不想做",
-      M: "有想法但TODO List里躺了一堆从没开始的",
-      H: "已经做了十几个开源项目，虽然大部分烂尾了",
+      L: "情绪我自己消化，这事不能交给任何外人",
+      M: "emo 的时候找 AI 写两句开解词，挺有用",
+      H: "我给女朋友发的每句话都是 AI 起的草",
     },
   },
 
-  // ===== AI共处模型 (AI Relationship) =====
+  // ===== I 身份观 (Identity) ===== 我还是不是我？
   {
-    code: "A1",
-    name: "AI依赖度",
-    model: "A",
-    modelName: "AI共处",
+    code: "I1",
+    name: "蒸馏他人意愿",
+    model: "I",
+    modelName: "身份观",
     levels: {
-      L: "AI？不需要，手写代码是程序员的尊严",
-      M: "用AI提效但会仔细Review，不做AI的传声筒",
-      H: "Cursor Tab Tab Tab，AI不动我不动，AI动了我也不一定动",
+      L: "蒸馏一个人就是数字掘墓，想想都毛骨悚然",
+      M: "蒸馏公众人物还行，身边的人下不去手",
+      H: "我已经蒸馏过三个前任了，效果很好",
     },
   },
   {
-    code: "A2",
-    name: "AI焦虑感",
-    model: "A",
-    modelName: "AI共处",
+    code: "I2",
+    name: "蒸馏自己意愿",
+    model: "I",
+    modelName: "身份观",
     levels: {
-      L: "AI替代程序员？我巴不得它来替我上班",
-      M: "有点焦虑但在努力提升自己的不可替代性",
-      H: "已经开始学prompt engineering了，打不过就加入",
+      L: "我死了就是死了，留个会说话的 AI 算什么",
+      M: "留个给家人用的版本还行，不要公开",
+      H: "我的聊天记录、日记、朋友圈，全部打包上传",
     },
   },
   {
-    code: "A3",
-    name: "技术信仰",
-    model: "A",
-    modelName: "AI共处",
+    code: "I3",
+    name: "Context 即本质",
+    model: "I",
+    modelName: "身份观",
     levels: {
-      L: "Vibe Coding 就完了，理解代码是上个时代的事",
-      M: "AI辅助可以但核心逻辑还是要自己把控",
-      H: "基础不能丢，算法、数据结构、系统设计才是根本",
+      L: "我是我，context 是 context，别偷换概念",
+      M: "说的有点道理但听起来还是怪怪的",
+      H: "马克思说得对啊——人的本质是一切社会关系的 context 总和",
+    },
+  },
+
+  // ===== L 劳动观 (Labor) ===== AI 能不能替我劳动？
+  {
+    code: "L1",
+    name: "AI 替代劳动接受度",
+    model: "L",
+    modelName: "劳动观",
+    levels: {
+      L: "AI 写的东西我不用，亲手做才踏实",
+      M: "重复劳动交给 AI，关键决策我来拍",
+      H: "我这辈子的目标就是让 AI 替我干完所有活",
+    },
+  },
+  {
+    code: "L2",
+    name: "自己动手欲",
+    model: "L",
+    modelName: "劳动观",
+    levels: {
+      L: "AI 能做的我绝不自己做，拒绝一切肌肉记忆",
+      M: "有些事亲手做比较有成就感，但效率第一",
+      H: "自己写一遍才算懂，AI 生成的都不是我的",
+    },
+  },
+  {
+    code: "L3",
+    name: "下目标即劳动者",
+    model: "L",
+    modelName: "劳动观",
+    levels: {
+      L: "只动嘴不动手那叫甲方，不叫劳动者",
+      M: "算半个吧，毕竟还得知道让 AI 干啥",
+      H: "指挥 AI 就是未来的劳动形式，我先占位了",
+    },
+  },
+
+  // ===== F 未来观 (Future) ===== 如果人不再被需要怎么办？
+  {
+    code: "F1",
+    name: "未来乐观度",
+    model: "F",
+    modelName: "未来观",
+    levels: {
+      L: "等着被平台豢养、分级管理，就是我们的结局",
+      M: "不好说，走一步看一步",
+      H: "AI 解放生产力，终于可以每天写诗画画了",
+    },
+  },
+  {
+    code: "F2",
+    name: "分配正义立场",
+    model: "F",
+    modelName: "未来观",
+    levels: {
+      L: "谁有算力谁说了算，这事没得商量",
+      M: "总得收点税搞点全民基本收入吧",
+      H: "算力、模型、数据必须是公共财产，没商量",
+    },
+  },
+  {
+    code: "F3",
+    name: "剩余人口焦虑",
+    model: "F",
+    modelName: "未来观",
+    levels: {
+      L: "不需要就不需要吧，躺平也挺好",
+      M: "有点慌但先过好当下",
+      H: "我现在就在给'被社会不需要的那一天'做准备",
     },
   },
 ];

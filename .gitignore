@@ -41,6 +41,13 @@ yarn-error.log*
 
 # agents
 AGENTS.md
+CLAUDE.md
+
+# source material for content (not shipped with the app)
+/团日.md
+/*.pdf
+/16personality.png
+/turning.png
 
 # typescript
 *.tsbuildinfo

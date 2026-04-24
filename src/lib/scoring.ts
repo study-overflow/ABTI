@@ -36,13 +36,15 @@ function levelToNum(level: "L" | "M" | "H"): number {
 
 export function calculateResult(
   answers: Record<number, number>,
-  hiddenAnswers?: { drink?: string; drinkAttitude?: string }
+  hiddenAnswers?: { opened?: string; usage?: string }
 ): TestResult {
   const dims = calculateDimensions(answers);
 
+  // TURING trigger: the user opened AI during the test AND let AI pick answer(s) for them.
+  // This is the meta joke — they took an AI-era-subjectivity test with AI assistance.
   if (
-    hiddenAnswers?.drink === "coffee" &&
-    hiddenAnswers?.drinkAttitude === "addict"
+    hiddenAnswers?.opened === "yes" &&
+    hiddenAnswers?.usage === "cheat"
   ) {
     return {
       personality: specialPersonality,

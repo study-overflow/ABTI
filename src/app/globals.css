@@ -1,19 +1,49 @@
 @import "tailwindcss";
 
+/* Everforest Light (medium) palette
+   bg:       #FDF6E3
+   bg1:      #F4F0D9
+   bg2:      #EFEBD4
+   bg3:      #E6E2CC
+   bg4:      #E0DCC7
+   bg5:      #BDC3AF
+   fg:       #5C6A72
+   grey:     #939F91
+   red:      #F85552
+   orange:   #F57D26
+   yellow:   #DFA000
+   green:    #8DA101   <-- brand primary
+   aqua:     #35A77C
+   blue:     #3A94C5
+   purple:   #DF69BA
+*/
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: #f97316;
-  --color-primary-dark: #ea580c;
-  --color-secondary: #fb923c;
-  --color-accent: #fbbf24;
-  --font-sans: system-ui, -apple-system, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+  --color-primary: #8DA101;
+  --color-primary-dark: #6E7F00;
+  --color-secondary: #35A77C;
+  --color-accent: #DFA000;
+  --font-sans: "Inter", "PingFang SC", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Mono", monospace;
 }
 
 :root {
-  --background: #fffbf5;
-  --foreground: #1c1917;
+  --background: #FDF6E3;
+  --bg1: #F4F0D9;
+  --bg2: #EFEBD4;
+  --bg3: #E6E2CC;
+  --bg5: #BDC3AF;
+  --foreground: #3D484D;
+  --fg-muted: #5C6A72;
+  --fg-subtle: #939F91;
+  --brand: #8DA101;
+  --brand-dark: #6E7F00;
+  --aqua: #35A77C;
+  --yellow: #DFA000;
+  --orange: #F57D26;
+  --red: #F85552;
 }
 
 * {
@@ -25,18 +55,15 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   min-height: 100vh;
-}
-
-.hero-gradient {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 40%, #dc2626 100%);
+  -webkit-font-smoothing: antialiased;
 }
 
 .card-hover {
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
 }
 .card-hover:hover {
-  transform: translateY(-6px) rotate(-0.5deg);
-  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15), 0 0 0 1px rgba(249, 115, 22, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(93, 106, 114, 0.08), 0 0 0 1px rgba(141, 161, 1, 0.12);
 }
 
 .progress-bar {
@@ -48,8 +75,8 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(24px) scale(0.98); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .slide-up {
@@ -57,66 +84,51 @@ body {
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(48px); }
+  from { opacity: 0; transform: translateY(32px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .option-btn {
   transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 2px solid #fed7aa;
-  background: white;
+  border: 1.5px solid var(--bg5);
+  background: #FFFDF5;
 }
 .option-btn:hover {
-  border-color: #f97316;
-  background: #fff7ed;
-  transform: translateX(6px);
-  box-shadow: -4px 0 0 0 #f97316;
+  border-color: var(--brand);
+  background: var(--bg1);
+  transform: translateX(3px);
+  box-shadow: -3px 0 0 0 var(--brand);
 }
 .option-btn.selected {
-  border-color: #f97316;
-  background: #fff7ed;
-  box-shadow: -4px 0 0 0 #f97316, 0 4px 16px rgba(249, 115, 22, 0.15);
+  border-color: var(--brand);
+  background: var(--bg1);
+  box-shadow: -3px 0 0 0 var(--brand), 0 2px 8px rgba(141, 161, 1, 0.12);
 }
 
 .radar-chart {
-  filter: drop-shadow(0 4px 16px rgba(249, 115, 22, 0.12));
+  filter: drop-shadow(0 4px 14px rgba(93, 106, 114, 0.08));
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  25% { transform: translateY(-8px) rotate(1deg); }
-  75% { transform: translateY(-4px) rotate(-1deg); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
 }
 
 .float-animation {
-  animation: float 4s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
 }
 
 .share-card {
-  background: linear-gradient(135deg, #f97316, #ea580c, #dc2626);
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.shimmer-text {
-  background: linear-gradient(90deg, #f97316 0%, #fbbf24 25%, #f97316 50%, #fbbf24 75%, #f97316 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 3s linear infinite;
+  background: linear-gradient(135deg, #8DA101 0%, #35A77C 100%);
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(249, 115, 22, 0.5), 0 0 60px rgba(249, 115, 22, 0.2); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(141, 161, 1, 0.25); }
+  50% { box-shadow: 0 0 0 12px rgba(141, 161, 1, 0); }
 }
 
 .pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: pulse-glow 2.4s ease-out infinite;
 }
 
 .grain-overlay {
@@ -124,8 +136,31 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Minimal geometric landing background */
+.landing-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at top, rgba(141, 161, 1, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(53, 167, 124, 0.06) 0%, transparent 50%),
+    var(--background);
+}
+
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(189, 195, 175, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(189, 195, 175, 0.25) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
 
 .stagger-1 { animation-delay: 0.05s; }
