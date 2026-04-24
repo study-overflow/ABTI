@@ -20,34 +20,18 @@
 
 ## 16 种姿态一览
 
-| | | | |
-|:---:|:---:|:---:|:---:|
-| 🔨 **LUDDITE** | 📦 **WRAPPER** | 📜 **PROMPT** | 🎈 **AGENT** |
-| 💬 **NPC** | 👥 **CLONE** | 👻 **GHOST** | 💪 **HUMAN** |
-| 🌅 **UTOPIA** | ☂️ **DOOMER** | 😌 **COPE** | 🤖 **CYBORG** |
-| 🕶️ **/dev/null** | 📄 **CONTEXT** | 🎧 **VIBE** | ⌨️ **CTRL-Z** |
-
-每个人格都配了一张手绘风格的小人像、一段半自嘲半认真的人格描述、优势/注意、一句灵魂格言。
+<p align="center">
+  <img src="./public/16personality.png" alt="16 personalities of ABTI" width="720" />
+</p>
 
 ## 致谢
 
-这个项目站在两个巨人的肩膀上：
-
-- **[CBTI · 程序员行为类型测试](https://cbti.codefather.cn)** by [程序员鱼皮](https://space.bilibili.com/12890453) — 本项目 fork 自 CBTI，完整地继承了它的测试框架、打分算法（5 模型 × 3 维度 × L/M/H 档）、雷达图和海报生成。没有鱼皮原作里把"程序员人格"做成 MBTI 风格的好点子，ABTI 连概念都不会有。特别感谢。
-- **AI** — 主题本身就是关于 AI 的，所以整件事本身就有一种讽刺的自洽：
-  - 人格插图由 **Gemini** 图像生成、**Claude Code** 切图去背景
-  - 题目、人格描述、这个 README 都由 **Claude** 参与起草
-  - 如果你答题时偷偷开了 AI，还能触发一个专门献给你的隐藏人格 —— 一个关于"你用 AI 回答了一份关于 AI 正在如何侵蚀你主体性的问卷"的 meta 笑话
-
-## 技术栈
-
-Next.js 16 · TypeScript · Tailwind v4 · Everforest Light 配色 · 纯前端 · 静态导出 · 无后端 · 无数据收集
+- **[CBTI · 程序员行为类型测试](https://cbti.codefather.cn)** by [程序员鱼皮](https://space.bilibili.com/12890453) — 本项目 fork 自 CBTI，继承了它的测试框架、打分算法和整体交互。
+- **AI** — 主题本身就是关于 AI 的，所以这件事本身就有一种讽刺的自洽：人格插图由 Gemini 生成、Claude Code 切图去背景，题目、人格描述和这份 README 都由 Claude 参与起草。答题时偷偷开了 AI 的话，还能触发一个专门献给你的隐藏人格。
 
 ## 声明
 
-这个测试**只是一场为了引发讨论的游戏**。它无法真的告诉你你是谁，也无法代替你对 AI 时代的思考。
-
-如果它让你笑了一下，然后愿意严肃地想一想"人"还能意味着什么——那就已经超额完成了它的任务。
+这个测试只是一场为了引发讨论的游戏，不必认真。但如果它让你想一想"人"还能意味着什么，就够了。
 
 ---
 
